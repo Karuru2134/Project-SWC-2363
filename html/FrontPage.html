@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse</title>
+    <link rel="stylesheet" href="../css/FrontPage.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <ul class="nav-list nav-list-larger">
+                    <li class="nav-item nav-item-hidden">
+                        <a href="Main.html" class="nav-link nav-link-apple"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/iphonePage.html" class="nav-link">Apple</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/AccessoriesPage.html" class="nav-link">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/ContactPage.html" class="nav-link">Contact Us</a>
+                    </li>
+
+                    <li class="nav-item nav-item-hidden">
+                        <a href="#" class="nav-link nav-link-bag" onclick="showCartPopup()"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-card" onclick="openCardInfo()"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Popup Structure -->
+    <section>
+        <div class="overlay fadeIn" id="cartPopupOverlay">
+            <div class="popup-box">
+                <button class="close-btn" onclick="closeCartPopup()">✖</button>
+                <h2>Shopping Cart</h2>
+                <p id="cartContent">Your cart is currently empty.</p>
+                <button onclick="placeOrder()">Place Order</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Confirmation Popup -->
+    <section>
+        <div class="overlay fadeIn" id="orderConfirmationOverlay">
+            <div class="popup-box">
+                <button class="close-btn" onclick="closeOrderConfirmation()">✖</button>
+                <h2>Order Placed!</h2>
+                <p>Your order has been placed successfully.</p>
+                <button onclick="closeOrderConfirmation()">Close</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empty Cart Warning Popup -->
+    <section>
+        <div class="overlay fadeIn" id="emptyCartOverlay">
+            <div class="popup-box">
+                <button class="close-btn" onclick="closeEmptyCartPopup()">✖</button>
+                <h2>Cart is Empty</h2>
+                <p>Your cart is currently empty. Please add items before placing an order.</p>
+                <button onclick="closeEmptyCartPopup()">Close</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Information Popup -->
+    <section>
+        <div class="overlay fadeIn" id="cardInfoPopup">
+            <div class="popup-box">
+                <button class="close-btn" onclick="closeCardInfo()">✖</button>
+                <h2>Enter Card Information</h2>
+                <form class="card-form">
+                    <label for="cardName">Name on Card:</label>
+                    <input type="text" id="cardName" name="cardName" placeholder="John Doe" required>
+
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+
+                    <label for="Address">Address:</label>
+                    <input type="text" id="address" name="address" placeholder="Jalan Skibdi, Taman P Diddy, 1000, underground base">
+
+                    <button type="button" class="submit-btn" onclick="submitCardInfo()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Popups and Cart Logic -->
+    <script>
+        let cartIsEmpty = true;
+
+        // Function to show the cart popup
+        function showCartPopup() {
+            document.getElementById('cartPopupOverlay').style.display = 'flex';
+            updateCartContent();
+        }
+
+        // Function to close the cart popup
+        function closeCartPopup() {
+            document.getElementById('cartPopupOverlay').style.display = 'none';
+        }
+
+        // Function to update cart content based on cart state
+        function updateCartContent() {
+            const cartContent = document.getElementById('cartContent');
+            cartContent.innerText = cartIsEmpty ? "Your cart is currently empty." : "Items in your cart.";
+        }
+
+        // Function to place order
+        function placeOrder() {
+            if (cartIsEmpty) {
+                showEmptyCartPopup();
+            } else {
+                closeCartPopup();
+                document.getElementById('orderConfirmationOverlay').style.display = 'flex';
+            }
+        }
+
+        // Close Order Confirmation Popup
+        function closeOrderConfirmation() {
+            document.getElementById('orderConfirmationOverlay').style.display = 'none';
+        }
+
+        // Show Empty Cart Warning Popup
+        function showEmptyCartPopup() {
+            document.getElementById('emptyCartOverlay').style.display = 'flex';
+        }
+
+        // Close Empty Cart Warning Popup
+        function closeEmptyCartPopup() {
+            document.getElementById('emptyCartOverlay').style.display = 'none';
+        }
+
+        // Open Card Information Popup
+        function openCardInfo() {
+            document.getElementById('cardInfoPopup').style.display = 'flex';
+        }
+
+        // Close Card Information Popup
+        function closeCardInfo() {
+            document.getElementById('cardInfoPopup').style.display = 'none';
+        }
+
+        // Submit and Save Card Information
+        function submitCardInfo() {
+            const cardName = document.getElementById('cardName').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (cardName && cardNumber && expiryDate && cvv) {
+                localStorage.setItem('cardName', cardName);
+                localStorage.setItem('cardNumber', cardNumber);
+                localStorage.setItem('expiryDate', expiryDate);
+                localStorage.setItem('cvv', cvv);
+                alert('Card information submitted and saved successfully!');
+                closeCardInfo();
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+
+        // Close popups when clicking outside the popup box
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('overlay')) {
+                event.target.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- Main Content -->
+    <div class="front-title">
+        <h1 class="title-heading"><span class="gradient-text">New Season.</span> New Celebration to Celebrate</h1>
+        <p class="title-paragraph">Buy Gift to your nearest person</p>
+    </div>
+
+    <!-- New Apple Offer Cards Section -->
+    <section class="card-container">
+        <div class="card">
+            <div class="card-icon">💳</div>
+            <div class="card-title">Pay 0% interest for up to 24 months.</div>
+            <div class="card-content">With an eligible credit card, you can choose the financing option that works for you.¹</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🚚</div>
+            <div class="card-title">Free delivery and pickup.</div>
+            <div class="card-content">Get free delivery or pick up at your Apple Store.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">💬</div>
+            <div class="card-title">Shop with Tech Specialist.</div>
+            <div class="card-content">Shop one on one with a Specialist. Online or in a store.</div>
+        </div>
+    </section>
+
+    <!-- Showcase Section for Latest Products -->
+    <div class="front-title">
+        <h1 class="title-heading"><span class="gradient-text">The Latest.</span> The Newest Product</h1>
+    </div>
+
+    <!-- Showcase Section for Latest Products -->
+    <section class="showcase-container">
+        <a href="../html/product-page-iPhone-16-Pro-Max.html" class="showcase-link">
+            <div class="showcase-card">
+                <img src="../image/Phone/iPhone-16-Pro-Max.png" alt="iPhone 16 Pro Max" class="showcase-image">
+                <h2 class="caption">iPhone 16 Pro Max</h2>
+            </div>
+        </a>
+        <a href="../html/product-page-iPhone-16.html" class="showcase-link">
+            <div class="showcase-card">
+                <img src="../image/Phone/iPhone-16-used.png" alt="iPhone 16" class="showcase-image">
+                <h2 class="caption">iPhone 16</h2>
+            </div>
+        </a>
+        <a href="../html/product-page-iPhone-15.html" class="showcase-link">
+            <div class="showcase-card">
+                <img src="../image/Phone/iphone-compare-iphone-15-202409.jpg" alt="iPhone 15" class="showcase-image">
+                <h2 class="caption">iPhone 15</h2>
+            </div>
+    </section>
+
+
+    <div class="front-title">
+        <h1 class="title-heading"><span class="gradient-text">The Best Price.</span> Best Price Offer</h1>
+    </div>
+
+    <!-- Showcase Section for Best Price Products -->
+    <section class="showcase-container">
+        <a href="../html/product-page-poco-f6-pro.html" class="showcase-link">
+            <div class="showcase-card">
+                <img src="../image/Phone/poco-f6-pro.jpg" alt="iPhone 16 Pro Max" class="showcase-image">
+                <h2 class="caption">Poco F6 Pro</h2>
+            </div>
+        </a>
+        <a href="../html/product-page-poco-f6.html" class="showcase-link">
+            <div class="showcase-card">
+                <img src="../image/Phone/poco-f6.png" alt="iPhone 16" class="showcase-image">
+                <h2 class="caption">Poco F6</h2>
+            </div>
+        </a>
+        <a href="../html/product-page-samsung-s24-fe.html" class="showcase-link">
+            <div class="showcase-card">
+                <img src="../image/Phone/Samsung-s24-fe.png" alt="iPhone 15" class="showcase-image">
+                <h2 class="caption">Samsung s24 FE</h2>
+            </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>More ways to shop: <a href="#">Find a retailer</a> near you. Or call 1800-80-6419.</p>
+        <p>Malaysia</p>
+        <p>Copyright © 2024 TechPulse Inc. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Use</a> |
+            <a href="#">Sales and Refunds</a> |
+            <a href="#">Legal</a> |
+            <a href="#">Site Map</a>
+        </div>
+    </footer>
+
+    <script src="../javascript/cart.js"></script>
+</body>
+</html>
+

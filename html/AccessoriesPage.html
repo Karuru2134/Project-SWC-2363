@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse</title>
+    <link rel="stylesheet" href="../css/iphonePage.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <ul class="nav-list nav-list-larger">
+                    <li class="nav-item nav-item-hidden">
+                        <a href="Main.html" class="nav-link nav-link-apple"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/iphonePage.html" class="nav-link">Apple</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/AccessoriesPage.html" class="nav-link">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ContactPage.html" class="nav-link">Contact Us</a>
+                    </li>
+
+
+
+                    </li>
+                    <!-- Add to Cart Button -->
+                  <li class="nav-item nav-item-hidden">
+                    <a href="../html/add-bag.html" class="nav-link nav-link-bag"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h4 class="title title-heading">Accessories</h4>
+            <h2 class="title title-heading-2">Super value deals</h2>
+            <h1 class="title title-heading-1">Create More Fun Experience </h1>
+            <p class="title paragraph">Save more with coupons up to 70% on this Christmas</p>
+        </div>
+        <img src="" alt="">
+    </section>
+        <div>
+            <h2 class="title-heading-feature">Accessories</h2>
+        <p class="title-heading-feature-small">More Fun</p>
+
+        </div>
+
+        <section>
+            <div class="showcase-container">
+                <a href="../html/product-page-powerbank.html" class="showcase-link">
+                    <div class="showcase-card">
+                        <img src="../image/Phone/powerbank.png" alt="Camera feature" class="showcase-image">
+                        <h2 class="caption">Anker Powerbank</h2>
+                    </div>
+                </a>
+
+                <a href="../html/product-page-charger.html" class="showcase-link">
+                    <div class="showcase-card">
+                        <img src="../image/Phone/ugreen-charger.png" alt="Video recording feature" class="showcase-image">
+                        <h2 class="caption">Ugreen Charger <br> USB C to USB C</h2>
+                    </div>
+                </a>
+
+                <a href="../html/product-page-sreen-protector.html" class="showcase-link">
+                    <div class="showcase-card">
+                        <img src="../image/Phone/screen-protectro.jpg" alt="Zoom control feature" class="showcase-image">
+                        <h2 class="caption">Screen protector (iPhone 15)</h2>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <div class="showcase-container">
+                <a href="../html/product-page-airpod-pro.html" class="showcase-link">
+                    <div class="showcase-card">
+                        <img src="../image/Phone/airpods-pro.png" alt="Camera feature" class="showcase-image">
+                        <h2 class="caption">Airpod Pro</h2>
+                    </div>
+                </a>
+
+                <a href="../html/product-page-airpod-max.html" class="showcase-link">
+                    <div class="showcase-card">
+                        <img src="../image/Phone/airpod-max.png" alt="Video recording feature" class="showcase-image">
+                        <h2 class="caption">Airpod Max</h2>
+                    </div>
+                </a>
+
+                <a href="../html/product-page-car-holder.html" class="showcase-link">
+                    <div class="showcase-card">
+                        <img src="../image/Phone/Phone-holder.png" alt="Zoom control feature" class="showcase-image">
+                        <h2 class="caption">Baseus Car Holder</h2>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+            <footer class="footer">
+                <p>More ways to shop: <a href="#">Find a retailer</a> near you. Or call 1800-80-6419.</p>
+                <p>Malaysia</p>
+                <p>Copyright © 2024 TechPulse Inc. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms of Use</a> |
+                    <a href="#">Sales and Refunds</a> |
+                    <a href="#">Legal</a> |
+                    <a href="#">Site Map</a>
+                </div>
+            </footer>
+
+
+
+        <script>
+            // Function to check if an element is partially in the viewport with a threshold
+            function isInViewport(element, threshold = 0.25) {
+                const rect = element.getBoundingClientRect();
+                const elementVisibleHeight = rect.height * threshold;
+
+                // Checks if at least threshold percent of the element is in the viewport
+                return (
+                    rect.bottom >= elementVisibleHeight &&
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) - elementVisibleHeight
+                );
+            }
+
+            // Debounce function to limit the rate at which a function is called
+            function debounce(func, wait = 100) {
+                let timeout;
+                return function (...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            }
+
+            // Function to add slide-in animation to hero content on page load
+            function animateHeroContent() {
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) {
+                    heroContent.classList.add('slide-in');
+                }
+            }
+
+            // Function to add the pop-in class to each showcase card in view
+            function checkCardsInView() {
+                const cards = document.querySelectorAll('.showcase-card');
+                cards.forEach(card => {
+                    if (isInViewport(card, 0.25)) { // 25% threshold
+                        card.classList.add('pop-in');
+                    }
+                });
+            }
+
+            // Function to check if feature title and subtitle are in view and apply animation
+            function checkTextInView() {
+                const featureTitle = document.querySelector('.title-heading-feature');
+                const featureSubtitle = document.querySelector('.title-heading-feature-small');
+
+                // Add the animation class if the elements are in the viewport
+                if (featureTitle && isInViewport(featureTitle, 0.1)) {
+                    featureTitle.classList.add('animate-slide-up');
+                }
+                if (featureSubtitle && isInViewport(featureSubtitle, 0.1)) {
+                    featureSubtitle.classList.add('animate-slide-up');
+                }
+            }
+
+           // Function to add fade-in animation to the footer when it comes into view
+function checkFooterInView() {
+    const footer = document.querySelector('.footer');
+    if (footer && isInViewport(footer, 0.1)) { // 10% threshold
+        footer.classList.add('fade-in');
+    }
+}
+
+// Update the combined function to check for footer visibility as well
+const checkAnimationsInView = debounce(function() {
+    checkCardsInView();
+    checkTextInView();
+    checkFooterInView(); // Check footer visibility
+}, 100);
+
+// Run animations on page load and scroll
+window.addEventListener('DOMContentLoaded', function() {
+    animateHeroContent();       // Run hero content animation on load
+    checkAnimationsInView();     // Check initial visibility of other elements
+});
+
+window.addEventListener('scroll', checkAnimationsInView);
+
+
+
+        </script>
+
+
+
+</body>
+</html>

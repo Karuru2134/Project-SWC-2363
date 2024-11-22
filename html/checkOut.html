@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - TechPulse</title>
+    <link rel="stylesheet" href="../css/product-page.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .checkout-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .checkout-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .checkout-form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .order-summary {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        }
+
+        .order-summary h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .order-summary p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .place-order-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .place-order-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .edit-info-btn {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .edit-info-btn:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+        </div>
+
+        <form class="checkout-form" id="checkoutForm" onsubmit="submitOrder(event)">
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- Shipping Information -->
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" name="state" required>
+                    <option value="">Select a state</option>
+                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                    <option value="Selangor">Selangor</option>
+                    <option value="Penang">Penang</option>
+                    <option value="Johor">Johor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method</label>
+                <select id="paymentMethod" name="paymentMethod" onchange="togglePaymentFields()" required>
+                    <option value="">Select a payment method</option>
+                    <option value="creditCard">Credit Card / Debit Card</option>
+                    <option value="touchNGo">Touch N Go</option>
+                </select>
+            </div>
+
+            <!-- Credit Card Information -->
+            <div id="creditCardFields" class="hidden">
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number">
+                </div>
+
+                <div class="form-group">
+                    <label for="expiration">Expiration Date</label>
+                    <input type="text" id="expiration" name="expiration" placeholder="MM/YY">
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV">
+                </div>
+            </div>
+
+            <!-- Touch N Go Information -->
+            <div id="touchNGoFields" class="hidden">
+                <div class="form-group">
+                    <label for="tngAccountNumber">Touch N Go Account Number</label>
+                    <input type="text" id="tngAccountNumber" name="tngAccountNumber" placeholder="Enter Touch N Go account number">
+                </div>
+
+                <div class="form-group">
+                    <label for="tngPhoneNumber">Phone Number</label>
+                    <input type="text" id="tngPhoneNumber" name="tngPhoneNumber" placeholder="Enter phone number">
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="orderDetails">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+                <p>Total: RM <span id="orderTotal">0.00</span></p>
+            </div>
+
+            <button type="submit" class="place-order-btn">Place Order</button>
+        </form>
+    </div>
+
+
+
+
+    <script>
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const orderDetailsContainer = document.getElementById('orderDetails');
+        const orderTotal = document.getElementById('orderTotal');
+
+        function updateOrderSummary() {
+            let total = 0;
+            orderDetailsContainer.innerHTML = '';
+
+            cartItems.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <p>${item.name} (${item.color}, ${item.storage}) x${item.quantity} - RM ${(item.price * item.quantity).toFixed(2)}</p>
+                `;
+                orderDetailsContainer.appendChild(orderItem);
+                total += item.price * item.quantity;
+            });
+
+            orderTotal.textContent = total.toFixed(2);
+        }
+
+        function togglePaymentFields() {
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            document.getElementById('creditCardFields').classList.add('hidden');
+            document.getElementById('touchNGoFields').classList.add('hidden');
+
+            if (paymentMethod === 'creditCard') {
+                document.getElementById('creditCardFields').classList.remove('hidden');
+            } else if (paymentMethod === 'touchNGo') {
+                document.getElementById('touchNGoFields').classList.remove('hidden');
+            }
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('checkoutForm');
+            const formData = new FormData(form);
+
+            const orderDetails = {
+                fullName: formData.get('fullName'),
+                email: formData.get('email'),
+                address: formData.get('address'),
+                city: formData.get('city'),
+                state: formData.get('state'),
+                zip: formData.get('zip'),
+                paymentMethod: formData.get('paymentMethod'),
+                cardNumber: formData.get('cardNumber') || null,
+                expiration: formData.get('expiration') || null,
+                cvv: formData.get('cvv') || null,
+                tngAccountNumber: formData.get('tngAccountNumber') || null,
+                tngPhoneNumber: formData.get('tngPhoneNumber') || null,
+                cart: cartItems,
+                total: parseFloat(orderTotal.textContent)
+            };
+
+            localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+            window.location.href = '../html/ReceiptPage.html';
+        }
+
+        updateOrderSummary();
+
+        // Function to enable form editing
+        function enableEdit() {
+            const confirmEdit = confirm('Do you want to edit your information?');
+            if (confirmEdit) {
+                const inputs = document.querySelectorAll('#checkoutForm input, #checkoutForm select');
+                inputs.forEach(input => input.disabled = false);
+            }
+        }
+
+        // Function to disable the form
+        function disableForm() {
+            const inputs = document.querySelectorAll('#checkoutForm input, #checkoutForm select');
+            inputs.forEach(input => input.disabled = true);
+        }
+
+       // Function to auto-save information as user types
+function autoSaveInformation() {
+    const userInfo = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        state: document.getElementById('state').value,
+        zip: document.getElementById('zip').value,
+    };
+
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+}
+
+// Load user information when the page loads
+function loadUserInfo() {
+    const savedInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (savedInfo) {
+        document.getElementById('fullName').value = savedInfo.fullName || '';
+        document.getElementById('email').value = savedInfo.email || '';
+        document.getElementById('address').value = savedInfo.address || '';
+        document.getElementById('city').value = savedInfo.city || '';
+        document.getElementById('state').value = savedInfo.state || '';
+        document.getElementById('zip').value = savedInfo.zip || '';
+    }
+}
+
+// Attach event listeners to form fields for auto-save
+function attachAutoSaveListeners() {
+    const formFields = document.querySelectorAll('#checkoutForm input, #checkoutForm select');
+    formFields.forEach(field => {
+        field.addEventListener('input', autoSaveInformation);
+        field.addEventListener('change', autoSaveInformation);
+    });
+}
+
+// Initialize auto-save and load saved data
+document.addEventListener('DOMContentLoaded', () => {
+    loadUserInfo();
+    attachAutoSaveListeners();
+});
+
+// Function to handle Proceed to Checkout button
+function proceedToCheckout() {
+        if (cartItems.length === 0) {
+            // Show modal notification if the cart is empty
+            showModal();
+        } else {
+            // Redirect to checkout page if there are items in the cart
+            window.location.href = "../html/checkOut.html";
+        }
+    }
+
+    // Function to show the modal
+    function showModal() {
+        document.getElementById("modalNotification").classList.add("active");
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById("modalNotification").classList.remove("active");
+    }
+
+    </script>
+</body>
+</html>
+
+
+
+

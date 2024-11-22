@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta character="UTF-8">
+        <meta name="viewport" contents="width=device-width", initial-scale="1.0" maximum-scale="1.0" minimum-scale="1.0">
+        <link rel="stylesheet" href="../css/Main.css">
+        <title>TechPulse</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                <nav class="nav">
+                    <ul class="nav-list nav-list-larger">
+                        <li class="nav-item nav-item-hidden">
+                            <a href="Main.html" class="nav-link nav-link-apple"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/iphonePage.html" class="nav-link">Apple</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/AccessoriesPage.html" class="nav-link">Accessories</a>
+                        </li>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/ContactPage.html" class="nav-link">Contact Us</a>
+                        </li>
+
+                        <!-- Add to Cart Button -->
+                <li>
+                    <!-- Trigger Button -->
+                    <a href="../html/add-bag.html" class="nav-link nav-link-bag"></a>
+                </li>
+        </nav>
+    </div>
+</header>
+
+<!-- user interface -->
+ <section>
+    <div class="menu">
+        <div class="user-icon" id="userIcon">
+          <img src="user-icon.png" alt="User Icon" />
+        </div>
+        <div class="user-menu" id="userMenu">
+          <ul>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+ </section>
+<!-- Cart Popup Structure -->
+<section>
+    <div class="fadeIn">
+
+    <div class="overlay" id="cartPopupOverlay">
+        <div class="popup-box">
+            <button class="close-btn" onclick="closeCartPopup()">✖</button>
+            <h2>Shopping Cart</h2>
+            <p>Your cart is currently empty.</p>
+            <button onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section>
+    <div class="fadeIn">
+         <!-- Order Confirmation Popup -->
+     <div class="overlay" id="orderConfirmationOverlay">
+        <div class="popup-box">
+            <button class="close-btn" onclick="closeOrderConfirmation()">✖</button>
+            <h2>Order Placed!</h2>
+            <p>Your order has been placed successfully.</p>
+            <button onclick="closeOrderConfirmation()">Close</button>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section>
+     <!-- Card Information Popup -->
+     <div class="overlay" id="cardInfoPopup">
+        <div class="popup-box">
+            <button class="close-btn" onclick="closeCardInfo()">✖</button>
+            <h2>Enter Card Information</h2>
+            <form class="card-form">
+                <label for="cardName">Name on Card:</label>
+                <input type="text" id="cardName" name="cardName" placeholder="John Doe" required>
+
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+
+                <label for="Address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Jalan Skibdi, Taman P Diddy, 1000, underground base">
+
+                <button type="button" class="submit-btn" onclick="submitCardInfo()">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- JavaScript for Cart Popup -->
+<script>
+      function addToCart(productName, price, imagePath) {
+        // Retrieve the current cart from local storage or initialize an empty array if it doesn't exist
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Check if the item already exists in the cart
+        let existingItem = cart.find(item => item.name === productName);
+
+        if (existingItem) {
+            // If the item exists, increase its quantity
+            existingItem.quantity += 1;
+        } else {
+            // If the item doesn't exist, add it to the cart with the image path
+            cart.push({ name: productName, price: price, quantity: 1, image: imagePath });
+        }
+
+        // Save the updated cart back to local storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update the cart count display in the header
+        updateCartCountDisplay();
+    }
+
+    function updateCartCountDisplay() {
+        // Retrieve the cart from local storage and calculate the total quantity
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+        // Display the total quantity in the cart count element
+        document.getElementById('cart-count').innerText = cartCount;
+    }
+
+    // Initialize cart count display on page load
+    document.addEventListener('DOMContentLoaded', updateCartCountDisplay);
+
+     // Track cart state (for simplicity, assuming cart is empty at start)
+     let cartIsEmpty = true;
+
+// Function to show the cart popup
+function showCartPopup() {
+    document.getElementById('cartPopupOverlay').style.display = 'flex';
+    updateCartContent();
+}
+
+// Function to close the cart popup
+function closeCartPopup() {
+    document.getElementById('cartPopupOverlay').style.display = 'none';
+}
+
+// Function to update cart content based on whether it's empty or not
+function updateCartContent() {
+    const cartContent = document.getElementById('cartContent');
+    cartContent.innerText = cartIsEmpty ? "Your cart is currently empty." : "Items in your cart.";
+}
+
+// Function to show the order confirmation popup if cart has items
+function placeOrder() {
+    if (cartIsEmpty) {
+        // Show empty cart warning popup
+        showEmptyCartPopup();
+    } else {
+        // Proceed with order placement
+        closeCartPopup(); // Close the cart popup first
+        document.getElementById('orderConfirmationOverlay').style.display = 'flex';
+    }
+}
+
+// Function to close the order confirmation popup
+function closeOrderConfirmation() {
+    document.getElementById('orderConfirmationOverlay').style.display = 'none';
+}
+
+// Function to show the empty cart warning popup
+function showEmptyCartPopup() {
+    document.getElementById('emptyCartOverlay').style.display = 'flex';
+}
+
+// Function to close the empty cart warning popup
+function closeEmptyCartPopup() {
+    document.getElementById('emptyCartOverlay').style.display = 'none';
+}
+
+// Optional: Close the cart popup if clicked outside the popup-box
+document.getElementById('cartPopupOverlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeCartPopup();
+    }
+});
+
+// Optional: Close the order confirmation popup if clicked outside the popup-box
+document.getElementById('orderConfirmationOverlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeOrderConfirmation();
+    }
+});
+
+  // Open Card Information Popup
+  function openCardInfo() {
+            document.getElementById('cardInfoPopup').style.display = 'flex';
+        }
+
+        // Close Card Information Popup
+        function closeCardInfo() {
+            document.getElementById('cardInfoPopup').style.display = 'none';
+        }
+
+        // Handle Card Information Submission
+        function submitCardInfo() {
+            const cardName = document.getElementById('cardName').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (cardName && cardNumber && expiryDate && cvv) {
+                alert('Card information submitted successfully!');
+                closeCardInfo();
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+
+        // Load saved card information from localStorage
+        function loadCardInfo() {
+            const savedCardName = localStorage.getItem('cardName');
+            const savedCardNumber = localStorage.getItem('cardNumber');
+            const savedExpiryDate = localStorage.getItem('expiryDate');
+            const savedCVV = localStorage.getItem('cvv');
+
+            if (savedCardName) document.getElementById('cardName').value = savedCardName;
+            if (savedCardNumber) document.getElementById('cardNumber').value = savedCardNumber;
+            if (savedExpiryDate) document.getElementById('expiryDate').value = savedExpiryDate;
+            if (savedCVV) document.getElementById('cvv').value = savedCVV;
+        }
+
+        // Save card information to localStorage
+        function submitCardInfo() {
+            const cardName = document.getElementById('cardName').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (cardName && cardNumber && expiryDate && cvv) {
+                localStorage.setItem('cardName', cardName);
+                localStorage.setItem('cardNumber', cardNumber);
+                localStorage.setItem('expiryDate', expiryDate);
+                localStorage.setItem('cvv', cvv);
+
+                alert('Card information submitted and saved successfully!');
+                closeCardInfo();
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+</script>
+
+        <section class="hero Gift">
+            <div class="container">
+                <div class="fade-in">
+                    <div class="title">
+                        <h2 class=" title-gift">Gift</h2>
+                        <h3 class="title-sub-heading special line ">Make their holiday the Best Holiday</h3>
+                        <p class="title-price"></p>
+                    </div>
+                    <div class="cta">
+                        <a href="FrontPage.html" class="cta-link">Shop Now</a>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section class="hero iPhone-16-pro">
+            <div class="container">
+                <div class="fade-in">
+                    <div class="title">
+                        <h2 class="title-heading">More Phone</h2>
+                        <h3 style="color: black;" class="title-sub-heading special-line">highly customizable, versatile experience across a wide range of devices and price points</h3>
+                        <p class="title-price"></p>
+                    </div>
+                    <div class="cta">
+                        <a href="../html/FrontPage.html" class="cta-link">Open Page</a>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section class="hero iPhone-16">
+            <div class="container">
+                <div class="fade-in">
+                    <div class="title title-dark">
+                        <h2 class="title-heading">Apple</h2>
+                        <h3 class="title-sub-heading">sleek design, user-friendly experience, high performance and long-term software support , secure ecosystem.</h3>
+                        <p class="title-price"></p>
+                    </div>
+                    <div class="cta">
+                        <a href="../html/iphonePage.html" class="cta-link ">Open Page</a>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section class="hero watch">
+            <div class="container">
+                <div class="fade-in">
+                <div class="title title-dark">
+                    <h2 class="title-heading">Accessories</h2>
+                    <h3 class="title-sub-heading">Phone accessories, including cases, screen protectors, chargers, headphones, grips, and more.</h3>
+                </div>
+                <div class="cta">
+                    <a href="../html/AccessoriesPage.html" class="cta-link cta-link-darker">Open Page</a>
+                </div>
+            </div>
+                </div>
+        </section>
+
+
+
+<script src="Main.js"></script>
+    </body>
+</html>

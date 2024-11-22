@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse</title>
+    <link rel="stylesheet" href="../css/product.-page.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <ul class="nav-list nav-list-larger">
+                    <li class="nav-item nav-item-hidden">
+                        <a href="Main.html" class="nav-link nav-link-apple"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/iphonePage.html" class="nav-link">Apple</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="..//html/AccessoriesPage.html" class="nav-link">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="..//html/ContactPage.html" class="nav-link">Contact Us</a>
+                    </li>
+
+                    <!-- Add to Cart Button -->
+                    <li class="nav-item nav-item-hidden">
+                        <a href="../html/add-bag.html" class="nav-link nav-link-bag" ></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <section class="product-container fade-in">
+        <div class="image-slider">
+            <div class="slider-images">
+                <img src="../image/Phone/Samsung-s24-fe.png" alt="iPhone Image 1" class="slide active">
+                <img src="../image/Phone/iphone-16-pro-model-unselect-gallery-1-202409.jpg" alt="iPhone Image 2" class="slide">
+                <img src="../image/Phone/iPhone-15-Pro-Max.jpg" alt="iPhone Image 3" class="slide">
+                <img src="../image/Phone/iPhone-15-Pro-Max.jpg" alt="iPhone Image 4" class="slide">
+            </div>
+        </div>
+
+        <div class="product-details fade-in">
+            <h6>Samsung / Samsung s24 FE</h6>
+            <h1>Samsung s24 FE</h1>
+            <h2>RM3299</h2>
+            <select id="color-select">
+                    <option>Select Color</option>
+                    <option>Titanium Grey</option>
+                    <option>Black</option>
+                    <option>Select your Color</option>
+            </select>
+            <select id="storage-select">
+                <option>Select Storage</option>
+                <option>128 GB</option>
+                <option>256 GB</option>
+                <option>512 GB</option>
+            </select>
+            <button class="normal" style="font-size: 1.2rem;" onclick="addToCart()">Add to Bag</button>
+        </div>
+    </section>
+</body>
+</html>
+
+
+    <section class="product-box">
+        <h2>Product Specifications</h2>
+
+        <div class="product-specifications">
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <td>Phone</td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td>43</td>
+                </tr>
+                <tr>
+                    <th>Brand</th>
+                    <td>Samsung</td>
+                </tr>
+                <tr>
+                    <th>Warranty Type</th>
+                    <td>Manufacturer Warranty</td>
+                </tr>
+                <tr>
+                    <th>Warranty Duration</th>
+                    <td>12 Months</td>
+                </tr>
+                <tr>
+                    <th>Ships From</th>
+                    <td>Kuala Lumpur</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="product-description">
+            <div class="title-spec">
+                <h3>Product Description</h3>
+            </div>
+
+            <ul class="key-features">
+                <li><strong>Display: 6.7-inch Dynamic AMOLED 2X, FHD+, 120Hz refresh rate, and Vision Booster for better visibility.</li>
+                <li><strong>Processor: Powered by the Exynos 2400e chipset, with 8GB RAM and up to 512GB storage..</li>
+                <li><strong>Camera: Triple rear setup (50MP main with OIS, 12MP ultrawide, 8MP telephoto) and a 10MP front camera.</li>
+                <li>Battery: 4,700mAh with 25W fast charging..</li>
+                <li>Durability: IP68 water and dust resistance.</li>
+                <li>Software and Features: Runs on Android 14 (One UI 6.1) with AI enhancements like Generative Edit and AI Nightography​</li>
+            </ul>
+        </div>
+    </section>
+
+    <h1 class="section-title">What's in the Box</h1>
+
+    <section>
+<div class="product-display">
+    <div class="product-item">
+        <img src="../image/Phone/samsu" alt="Samsung s24 FE" class="product-image">
+        <p class="product-name">Samsung s24 FE</p>
+    </div>
+    <div class="product-item">
+        <img src="../image/Phone/iphone-16-pro-braided-cable-witb-202409.jpg" alt="USB-C Charge Cable" class="product-image">
+        <p class="product-name">USB-C Charge Cable</p>
+    </div>
+</div>
+    </section>
+
+
+<!-- JavaScript for Adding to Cart -->
+<script>
+    // Function to show a notification
+    function showNotification(message) {
+        // Create notification container if it doesn't exist
+        let notification = document.getElementById('notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'notification';
+            notification.style.position = 'fixed';
+            notification.style.top = '50%';
+            notification.style.left = '50%';
+            notification.style.transform = 'translate(-50%, -50%)'; // Centering the box
+            notification.style.backgroundColor = '#f8d7da';
+            notification.style.color = '#721c24';
+            notification.style.padding = '20px 30px';
+            notification.style.borderRadius = '10px';
+            notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            notification.style.fontSize = '1.2rem';
+            notification.style.textAlign = 'center';
+            notification.style.zIndex = '1000';
+            notification.style.display = 'none';
+            document.body.appendChild(notification);
+        }
+
+        // Set the message and show the notification
+        notification.textContent = message;
+        notification.style.display = 'block';
+
+        // Hide the notification after 3 seconds
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    }
+    // Function to add the product to the cart
+    function addToCart() {
+        // Retrieve product details
+        const productName = document.querySelector('.product-details h1').textContent;
+        const productModel = document.querySelector('.product-details h6').textContent;
+        const productPrice = parseFloat(document.querySelector('.product-details h2').textContent.replace('RM', ''));
+        const productColor = document.getElementById('color-select').value; // Get selected color
+        const productStorage = document.getElementById('storage-select').value; // Get selected storage
+
+        // Validate that color and storage are selected
+        if (productColor === "Select Color" || productStorage === "Select Storage") {
+            showNotification("Please select both a color and storage option.");
+            return;
+        }
+
+        // Retrieve the cart from localStorage, or initialize it if it doesn't exist
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Check if the product with the same options is already in the cart
+        const existingItemIndex = cartItems.findIndex(item =>
+            item.name === productName && item.color === productColor && item.storage === productStorage
+        );
+
+        if (existingItemIndex !== -1) {
+            // If the product with the same options already exists, increment its quantity
+            cartItems[existingItemIndex].quantity += 1;
+        } else {
+            // Add a new item to the cart
+            const newItem = {
+                id: cartItems.length + 1,
+                name: productName,
+                model: productModel,
+                price: productPrice,
+                color: productColor,
+                storage: productStorage,
+                quantity: 1,
+                image: "../image/Phone/Samsung-s24-fe.png" // Placeholder image for the product
+            };
+            cartItems.push(newItem);
+        }
+
+        // Save the updated cart back to localStorage
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // Notify the user
+        showNotification(`${productName} (${productColor}, ${productStorage}) has been added to your cart.`);
+    }
+
+    </script>
+
+    <footer class="footer">
+        <p>More ways to shop: <a href="#">Find a retailer</a> near you. Or call 1800-80-6419.</p>
+        <p>Malaysia</p>
+        <p>Copyright © 2024 TechPulse Inc. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Use</a> |
+            <a href="#">Sales and Refunds</a> |
+            <a href="#">Legal</a> |
+            <a href="#">Site Map</a>
+        </div>
+    </footer>
+    </body>
+    </html>

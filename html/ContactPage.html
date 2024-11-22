@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse</title>
+    <link rel="stylesheet" href="../css/accessoriesPage.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <ul class="nav-list nav-list-larger">
+                    <li class="nav-item nav-item-hidden">
+                        <a href="Main.html" class="nav-link nav-link-apple"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/iphonePage.html" class="nav-link">Apple</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/AccessoriesPage.html" class="nav-link">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/ContactPage.html" class="nav-link">Contact Us</a>
+                    </li>
+                  <!-- Add to Cart Button -->
+                  <li class="nav-item nav-item-hidden">
+                    <a href="../html/add-bag.html" class="nav-link nav-link-bag"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Cart Popup Structure -->
+<section>
+    <div class="overlay" id="cartPopupOverlay">
+        <div class="popup-box">
+            <button class="close-btn" onclick="closeCartPopup()">✖</button>
+            <h2>Shopping Cart</h2>
+            <p>Your cart is currently empty.</p>
+            <button onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+</section>
+
+<section>
+     <!-- Order Confirmation Popup -->
+     <div class="overlay" id="orderConfirmationOverlay">
+        <div class="popup-box">
+            <button class="close-btn" onclick="closeOrderConfirmation()">✖</button>
+            <h2>Order Placed!</h2>
+            <p>Your order has been placed successfully.</p>
+            <button onclick="closeOrderConfirmation()">Close</button>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Cart Popup -->
+<script>
+     // Track cart state (for simplicity, assuming cart is empty at start)
+     let cartIsEmpty = true;
+
+// Function to show the cart popup
+function showCartPopup() {
+    document.getElementById('cartPopupOverlay').style.display = 'flex';
+    updateCartContent();
+}
+
+// Function to close the cart popup
+function closeCartPopup() {
+    document.getElementById('cartPopupOverlay').style.display = 'none';
+}
+
+// Function to update cart content based on whether it's empty or not
+function updateCartContent() {
+    const cartContent = document.getElementById('cartContent');
+    cartContent.innerText = cartIsEmpty ? "Your cart is currently empty." : "Items in your cart.";
+}
+
+// Function to show the order confirmation popup if cart has items
+function placeOrder() {
+    if (cartIsEmpty) {
+        // Show empty cart warning popup
+        showEmptyCartPopup();
+    } else {
+        // Proceed with order placement
+        closeCartPopup(); // Close the cart popup first
+        document.getElementById('orderConfirmationOverlay').style.display = 'flex';
+    }
+}
+
+// Function to close the order confirmation popup
+function closeOrderConfirmation() {
+    document.getElementById('orderConfirmationOverlay').style.display = 'none';
+}
+
+// Function to show the empty cart warning popup
+function showEmptyCartPopup() {
+    document.getElementById('emptyCartOverlay').style.display = 'flex';
+}
+
+// Function to close the empty cart warning popup
+function closeEmptyCartPopup() {
+    document.getElementById('emptyCartOverlay').style.display = 'none';
+}
+
+// Optional: Close the cart popup if clicked outside the popup-box
+document.getElementById('cartPopupOverlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeCartPopup();
+    }
+});
+
+// Optional: Close the order confirmation popup if clicked outside the popup-box
+document.getElementById('orderConfirmationOverlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeOrderConfirmation();
+    }
+});
+</script>
+
+<div class="contact-container">
+    <h1>Contact Us</h1>
+    <p>We're here to help! Reach out to us by filling out the form below or using the contact details provided.</p>
+
+    <!-- Contact Form Section -->
+    <div class="form-container">
+        <form action="#" method="POST" class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <a href="../html/Thank-You-Page.html" class="submit-btn">Submit</a>
+        </form>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>Phone:</strong> (123) 456-7890</p>
+        <p><strong>Email:</strong> info@example.com</p>
+        <p><strong>Address:</strong> 1234 Street Name, City, State, Zip Code</p>
+    </div>
+</div>
+
+
+
+</body>
+</html>

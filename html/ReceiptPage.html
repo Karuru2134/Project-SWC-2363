@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt - TechPulse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .receipt-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .receipt-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: #007bff;
+        }
+
+        .receipt-header p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .receipt-details {
+            margin-bottom: 20px;
+        }
+
+        .receipt-details p {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        .receipt-items {
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .receipt-items h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+
+        .receipt-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .receipt-footer p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-container button, .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .button-container button:hover, .button-container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <!-- Logo beside the TechPulse title -->
+            <h1>TechPulse</h1>
+        </div>
+        <p style="text-align: center;">Order Receipt</p>
+        <div class="receipt-details" id="receiptDetails">
+            <!-- User Details will be inserted here -->
+        </div>
+        <div class="receipt-items" id="receiptItems">
+            <h2>Items</h2>
+            <!-- Cart Items will be inserted here -->
+        </div>
+        <div class="button-container">
+            <button class="print-btn" onclick="window.print()">Print Receipt</button>
+            <a href="../html/Main.html">Return to Shopping</a>
+        </div>
+        <div class="receipt-footer">
+            <p>Thank you for shopping with TechPulse!</p>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve the order details from localStorage
+        const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+        // Populate user information
+        const receiptDetails = document.getElementById('receiptDetails');
+        receiptDetails.innerHTML = `
+            <p><strong>Full Name:</strong> ${orderDetails.fullName}</p>
+            <p><strong>Email:</strong> ${orderDetails.email}</p>
+            <p><strong>Address:</strong> ${orderDetails.address}, ${orderDetails.city}, ${orderDetails.state}, ${orderDetails.zip}</p>
+            <p><strong>Payment Method:</strong> ${orderDetails.paymentMethod}</p>
+        `;
+
+        // Populate cart items
+        const receiptItems = document.getElementById('receiptItems');
+        receiptItems.innerHTML += orderDetails.cart.map(item => `
+            <div class="receipt-item">
+                <p>${item.name} (x${item.quantity})</p>
+                <p>RM ${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
+        `).join('');
+        receiptItems.innerHTML += `
+            <div class="receipt-item">
+                <strong>Total</strong>
+                <strong>RM ${orderDetails.total.toFixed(2)}</strong>
+            </div>
+        `;
+    </script>
+</body>
+</html>
+
