@@ -1,0 +1,581 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: #555;
+}
+
+.container {
+    max-width: 103rem;
+    margin: 0 auto;
+    padding: 0 2.2rem;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 4.4rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2rem);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 -1rem;
+}
+
+.nav-list-mobile {
+    display: none;
+}
+
+.nav-link {
+    font-size: 1.4em;
+    color: #fff;
+    padding: 0 1rem;
+    transition: opacity .5s;
+}
+
+.nav-link:hover {
+    opacity: .7;
+}
+
+.nav-link-apple {
+    width: 1.6rem;
+    height: 4.4rem;
+    background: url(../Image/logo/T__2_-removebg-preview.png) center no-repeat;
+}
+
+.nav-link-bag {
+    width: 1.4rem;
+    height: 4.4rem;
+    background: url(../Image/icon/shopping-bag\ 24.png) center no-repeat;
+}
+
+/* done bar */
+
+/* Homepage */
+
+.front-title {
+    width: auto;
+    top: 0;
+    left: 0;
+    color: black;
+    margin-top: 5rem;
+    padding-left: 18rem;
+    padding-top: 5rem;
+}
+
+.title-heading {
+    font-size: 3.26rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #ff3c60, #ff0ecf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 5px rgb(255, 95, 156);
+}
+
+.title-paragraph {
+    font-size: 1.8rem;
+}
+
+.title-dark {
+    padding-top: 10rem;
+    right: 0;
+    margin-right: 3rem;
+    color: white;
+}
+
+.title-dark-position {
+    color: rgb(151, 140, 140);
+    margin-right: 3rem;
+    font-size: 1.65rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.col-2 {
+    flex-basis: 50%;
+    min-width: 300px;
+}
+
+.conteudo {
+    width: 100%;
+    margin-top: 0;
+}
+
+.carrousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 4.5rem;
+    margin-left: 20rem;
+    margin-top: 10rem;
+}
+
+.carrousel::-webkit-scrollbar {
+    display: none;
+    width: 100%;
+}
+
+.card {
+    flex: 0 0 auto;
+    border-radius: 10px;
+    min-width: 200px;
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.Samsung {
+    background: url(../image/Phone/Samsung-s24-Ultra-Transparent.png) no-repeat center;
+    background-size: contain;
+}
+
+.Pixel {
+    background: url(../image/Phone/google-pixel-9.png) no-repeat center;
+    background-size: contain;
+}
+
+.Nothing {
+    background: url(../image/Phone/Nothing-phone-2a.png) no-repeat center;
+    background-size: contain;
+}
+
+.Vivo {
+    background: url(../image/Phone/Vivo-x100.png) no-repeat center;
+    background-size: contain;
+}
+
+.Mac {
+    background: url(../image/Phone/MacBook-Pro-Transparenrt.png) no-repeat center;
+    background-size: contain;
+}
+
+.iPhone {
+    background: url(../image/Phone/iPhone-15-Pro-Max.jpg) no-repeat center;
+    background-size: contain;
+}
+
+.iPad {
+    background: url(../image/Phone/iPad-Pro\(2\).png) no-repeat center;
+    background-size: contain;
+}
+
+.Samsung-second {
+    background: url(../image/Phone/galaxy-s24-ultra-highlights-s-pen-mo.jpg);
+    background-size: 125rem;
+    min-width: 70rem;
+}
+
+.Word {
+    font-size: 1.2rem;
+    color: black;
+    text-align: center;
+    margin-top: auto;
+    padding-bottom: 10px;
+}
+
+.Card {
+    padding: 2rem;
+    flex: 0 0 auto;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    width: 50rem;
+    height: 70rem;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 4rem;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.carrousel-second {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 4.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.carrousel-second::-webkit-scrollbar {
+    display: none;
+    width: 100%;
+}
+
+.cta {
+    text-align: center;
+    margin-top: 25rem;
+}
+
+.cta-link {
+    padding-bottom: 0.1rem;
+    color: #88bbff;
+    display: inline-block;
+    border-radius: 20px;
+    color: rgba(86, 78, 78, 0.288);
+    transition: background-color 0.8s, color 0.8s;
+}
+
+.cta-link:hover {
+    background-color: rgb(86, 78, 78);
+    color: #f7f7f7;
+}
+
+/* New Apple Offer Cards Section */
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 5rem;
+    padding: 0 2rem;
+}
+
+.card {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    width: 450px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.card-content {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card-button {
+    align-self: flex-start;
+    background-color: #fff;
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    width: 30x;
+    height: 24px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-button:hover {
+    background-color: #ccc;
+}
+
+/* Showcase Section with White Background */
+.showcase-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 10rem;
+    text-align: center;
+    background-color: #fff; /* White background for light theme */    background-color: #fff; /* White background for light theme */
+    scroll-behavior: smooth; /* Smooth scrolling effect */
+}
+
+.showcase-container::-webkit-scrollbar {
+    height: 8px; /* Custom scrollbar height */
+}
+
+.showcase-container::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Custom scrollbar color */
+    border-radius: 4px;
+}
+.showcase-card {
+    width: 500px;
+    padding: 10rem;
+    background: #f9f9f9; /* Light card background */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.showcase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.showcase-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.caption {
+    padding: 15px;
+    font-size: 2.4rem;
+    color: #555; /* Darker gray for better readability */
+    line-height: 1.6;
+    background-color: #f9f9f9; /* Match card background */
+}
+
+.caption strong {
+    color: #222; /* Darker color for emphasized text */
+}
+
+.footer {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 25rem;
+    font-size: 1.4rem;
+    color: #666;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+}
+
+.footer a {
+    color: #007aff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.footer .footer-links {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.footer .footer-links a {
+    margin: 0 8px;
+    color: #666;
+    font-size: 1.4rem;
+}
+
+.footer .footer-links a:hover {
+    color: #007aff;
+}
+
+/* Add keyframes for fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Popup Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Popup Box with animation */
+.popup-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    max-height: 400px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    /* Animation */
+    opacity: 0; /* Start hidden */
+    transform: scale(0.95); /* Slightly shrink the popup */
+    animation: fadeIn 0.3s ease-out forwards; /* Trigger fadeIn animation */
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute; /* Fix position issues */
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+  /* Form Fields */
+  .card-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.card-form input {
+    display: flex;
+    width: 38rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.submit-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Fade-in Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Optional slight movement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply Fade-in Animation to Elements */
+.overlay.show, /* Cart or Modal Overlay */
+.popup-box,
+.showcase-card, /* Cards in the Showcase Section */
+.card, /* Cards in any Card Section */
+.product-container, /* Product Container */
+.footer, /* Footer */
+.front-title, /* Main Title */
+.carrousel, /* Carousel */
+.row, /* Row Layouts */
+.cta { /* Call to Action Section */
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 0.8s ease-out forwards; /* Apply fade-in animation */
+    animation-delay: 0.2s; /* Optional delay for staggered effect */
+}
+
+/* Specific Delays for a Staggered Effect */
+.showcase-card:nth-child(1),
+.card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.showcase-card:nth-child(2),
+.card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.showcase-card:nth-child(3),
+.card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.showcase-card:nth-child(4),
+.card:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.product-container {
+    animation-delay: 0.1s;
+}
+
+.footer {
+    animation-delay: 1s;
+}
+
+/* Popup Overlay with Fade-in Trigger */
+.overlay.show {
+    display: flex; /* Display overlay when .show is added */
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Popup Box with Fade-in */
+.popup-box {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Optional for Close Button Appearance */
+.close-btn {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.2s; /* Delay for staggered appearance */
+}
+
+
+
+

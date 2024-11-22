@@ -1,0 +1,822 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+a{
+    display: block;
+    text-decoration: none;
+}
+
+.container{
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 0 2.2rem;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 4.4rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2rem);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 -1rem;
+}
+
+.nav-list-mobile {
+    display: none;
+}
+
+.nav-link{
+    font-size: 1.4em;
+    color: #fff;
+    padding: 0 1rem;
+    transition: opacity .5s;
+}
+
+.nav-link:hover{
+    opacity: .7;
+}
+
+.nav-link-apple {
+    width: 1.6rem;
+    height: 4.4rem;
+    background: url(../Image/logo/T__2_-removebg-preview.png)  center no-repeat ;
+}
+
+.nav-link-bag {
+    width: 1.4rem;
+    height: 4.4rem;
+    background: url(../Image/icon/shopping-bag\ 24.png)  center no-repeat ;
+}
+
+/* Product Page Layout */
+.top-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-top: 6rem;
+    gap: 2rem;
+}
+.prodetails {
+    display: flex;
+    margin-top: 20px;
+}
+.single-pro-image {
+    width: 40%;
+    margin-right: 50px;
+}
+.small-img-group {
+    display: flex;
+    justify-content: space-between;
+}
+.single-pro-details {
+    width: 50%;
+    padding-top: 30px;
+}
+
+/* Typography */
+h6 {
+    font-size: 1rem;
+    color: #817a7a;
+}
+h4 {
+    padding-top: 40px 0 20px 0;
+    font-size: 3rem;
+    margin-bottom: 5rem;
+}
+h2 {
+    padding-top: 40px 0 20px 0;
+    font-size: 26px;
+}
+
+/* Forms & Buttons */
+select, input, button {
+    display: block;
+}
+select {
+    padding: 5px 10px;
+    margin: 20px 0 10px;
+}
+input {
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+button {
+    background: #3b55ff;
+}
+.normal {
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    justify-content: space-between;
+    background-color: #007bff;
+    color: rgb(254, 249, 249);
+    font-size: 15px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+.normal:hover {
+    background-color: white;
+    color: #1f22ff;
+}
+
+/* Image Slider */
+.image-slider {
+    width: 400px;
+    max-width: 100%;
+}
+.slider-images {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slide {
+    display: none;
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+.slide.active {
+    display: block;
+}
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+.slider-controls button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+/* Product Details */
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    gap: 5rem;
+    margin-left: 0;
+}
+.product-details {
+    max-width: 300px;
+}
+.product-details h6 {
+    font-size: 1rem;
+    color: #817a7a;
+}
+.product-details h1 {
+    font-size: 2.5rem;
+    margin-top: 0.5rem;
+}
+.product-details h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 1rem;
+}
+.product-details span {
+    display: block;
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+/* Comparison Section */
+.comparison-section {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+    gap: 4rem;
+    margin-top: 4rem;
+    background-color: #fff;
+    color: #fff;
+}
+.comparison-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    text-align: center;
+    gap: 2rem;
+}
+.comparison-column p {
+    color: black;
+}
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.icon {
+    width: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Product Specifications & Description */
+.product-box {
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+.product-specifications {
+    margin-bottom: 20px;
+}
+.product-specifications table {
+    width: 100%;
+    font-size: 15px;
+    border-collapse: collapse;
+}
+.product-specifications th, .product-specifications td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+    color: #555;
+}
+.product-description {
+    margin-bottom: 20px;
+}
+.key-features {
+    list-style-type: none;
+    padding: 0;
+    color: #555;
+}
+.key-features li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+.key-features li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #007aff;
+    font-weight: bold;
+}
+
+/* Cart Dropdown */
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 250px;
+    background-color: #fff;
+    width: 300px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+    text-align: left;
+    transition: max-height 0.5s ease;
+}
+.cart-dropdown.show {
+    display: block;
+    max-height: 400px;
+}
+.cart-dropdown h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 2.2em;
+}
+.cart-dropdown label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+.cart-dropdown select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.cart-dropdown #cart-total {
+    font-weight: bold;
+    margin-top: 20px;
+}
+.place-order-btn {
+    background-color: #007bff;
+    color: white;
+    margin-top: 1rem;
+    width: 50spx;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+.place-order-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Modal Background */
+.modal {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #ffffff;
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Form Styles inside Modal */
+.modal-content form label {
+    display: block;
+    margin-top: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.modal-content form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Submit Button in Modal */
+.submit-btn {
+    margin-top: 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Transition for Modal */
+.modal.show {
+    display: flex; /* Show the modal */
+    animation: fadeInModal 0.3s ease-in-out;
+}
+.modal.hide {
+    display: none;
+    animation: fadeOutModal 0.3s ease-in-out;
+}
+
+/* Keyframes for Modal Animations */
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeOutModal {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Product Display */
+.product-display {
+    display: flex;
+    gap: 10rem; /* Space between items */
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+/* Individual Product Item */
+.product-item {
+    text-align: center;
+}
+.product-image {
+    max-width: 150px; /* Adjust size as needed */
+    max-height: 200px; /* Ensure images stay within bounds */
+    object-fit: contain; /* Keep image aspect ratio */
+}
+.product-name {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+/* Cart Item Styling */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Icon in the Corner */
+.card-info-icon {
+    position: fixed;
+    margin-top: 150rem;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: transform 0.2s;
+}
+.card-info-icon:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Comparison Section - Scrollable */
+.comparison-section {
+    display: flex;
+    gap: 4rem;
+    justify-content: start;
+    padding: 3rem;
+    background-color: #fff;
+    color: #333;
+    justify-content: center;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.comparison-section::-webkit-scrollbar {
+    height: 8px;
+}
+.comparison-section::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* Product Display - Horizontal Scroll */
+.product-display {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.product-display::-webkit-scrollbar {
+    height: 8px;
+}
+.product-display::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+.bg-white {
+    background-color: #fff;
+}
+.mb-2 {
+    margin-bottom: 2rem;
+}
+.pt-3 {
+    padding-top: 3rem;
+}
+.font-bold {
+    font-weight: bold;
+}
+.fs-large {
+    font-size: 1.8rem;
+}
+
+/* Place Order Button */
+.place-order-btn {
+
+    display: inline-block;
+    padding: 10px 20px;
+    justify-content: center;
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.place-order-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Smooth Transition for Showing/Closing Cart Dropdown */
+.cart-dropdown {
+    transition: opacity 0.5s ease;
+}
+.cart-dropdown.show {
+    opacity: 1;
+    display: block;
+}
+.cart-dropdown.hide {
+    opacity: 0;
+    display: none;
+}
+
+/* Additional styling for form inputs */
+.modal-content form input[type="text"],
+.product-details select {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Smooth Scaling for Product Card */
+.product-card {
+    transition: transform 0.3s ease;
+}
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background-color: #f9f9f9;
+    padding: 20px;
+    font-size: 1.4rem;
+    color: #666;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+}
+.footer a {
+    color: #007aff;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.footer .footer-links {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+.footer .footer-links a {
+    margin: 0 8px;
+    color: #666;
+    font-size: 1.4rem;
+}
+
+.section-title {
+    margin-left: 77rem;
+    margin-bottom: 3rem;
+
+}
+
+/* Add keyframes for fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Popup Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Popup Box with animation */
+.popup-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    max-height: 400px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    /* Animation */
+    opacity: 0; /* Start hidden */
+    transform: scale(0.95); /* Slightly shrink the popup */
+    animation: fadeIn 0.3s ease-out forwards; /* Trigger fadeIn animation */
+}
+
+/* Close Button */
+.close-btn {
+        position: absolute; /* Set to absolute positioning within the popup */
+        top: 30px; /* Aligns it towards the top */
+        right: 10px; /* Aligns it towards the right */
+        background: #007bff; /* Background color for visibility */
+        color: white; /* White text color */
+        border: none; /* Remove any borders */
+        font-size: 16px; /* Adjust font size */
+        border-radius: 5px; /* Optional rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease; /* Smooth color transition */
+    }
+
+.close-btn:hover {
+        background-color: #0056b3; /* Darker background on hover */
+
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Slightly move up */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.popup-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    max-height: 400px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    opacity: 0;
+    transform: translateY(10px); /* Initial transform */
+    animation: fadeIn 0.5s ease-out forwards; /* Trigger fadeIn animation */
+}
+
+.showcase-card {
+    width: 500px;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px); /* Initial transform */
+    animation: fadeIn 0.5s ease-out forwards; /* Trigger fadeIn animation */
+}
+
+.showcase-card:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.notification {
+    opacity: 0;
+    transform: translateY(10px); /* Initial transform */
+    animation: fadeIn 0.5s ease-out forwards; /* Trigger fadeIn animation */
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Cart Popup Overlay */
+#cartPopupOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Popup Box Styling */
+.popup-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Cart Header */
+.popup-box h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Cart Content Styling */
+.popup-box p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Place Order Button */
+.popup-box button {
+    background-color: #007bff;
+    margin-top: 25rem;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup-box button:hover {
+    background-color: #0056b3;
+}
+

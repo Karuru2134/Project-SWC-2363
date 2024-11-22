@@ -1,0 +1,131 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .sidebar {
+    width: 250px;
+    background-color: #2d3e50;
+    padding: 20px;
+    height: 100vh;
+    color: white;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .menu {
+    list-style-type: none;
+  }
+
+  .menu li {
+    margin: 15px 0;
+  }
+
+  .menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .menu a:hover,
+  .menu a.active {
+    background-color: #1d2733;
+  }
+
+  .content {
+    flex: 1;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .account-form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .account-form input,
+  .account-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .account-form textarea {
+    resize: vertical;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .update-btn,
+  .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .update-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  .update-btn:hover {
+    background-color: #45a049;
+  }
+
+  .cancel-btn {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .cancel-btn:hover {
+    background-color: #e53935;
+  }
